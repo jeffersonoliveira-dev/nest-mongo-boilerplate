@@ -1,18 +1,21 @@
-version: '3.8'
+volumes:
+  spike-bff_mongo_data:
 
 services:
   mongodb:
-    build: .
     image: mongo:latest
     container_name: mongodb_container
     ports:
       - "27017:27017"
     volumes:
-      - mongo_data:/data/db
+      - spike-bff_mongo_data:/data/db
     environment:
-      MONGO_INITDB_ROOT_USERNAME: root
-      MONGO_INITDB_ROOT_PASSWORD: 123456
-      MONGO_INITDB_DATABASE: exp-plat-bff
-
-volumes:
-  mongo_data:
+      MONGO_INITDB_ROOT_USERNAME: spike-bff-admin
+      MONGO_INITDB_ROOT_PASSWORD: test
+      MONGO_INITDB_DATABASE: spike-bff
+    healthcheck:
+      test: ['CMD', 'mongosh', '--eval', "db.adminCommand('ping')"]
+      interval: 5s
+      timeout: 5s
+      retries: 3
+      start_period: 5s
