@@ -3,6 +3,7 @@ import { ConfigModule, ConfigService } from '@nestjs/config';
 import { MongooseModule } from '@nestjs/mongoose';
 import { DatabaseService } from './database/database.service';
 import * as Joi from 'joi';
+import { HealthModule } from './modules/health/health.module';
 
 @Module({
   imports: [
@@ -26,8 +27,8 @@ import * as Joi from 'joi';
       },
       inject: [ConfigService],
     }),
+    HealthModule,
   ],
-  controllers: [],
   providers: [DatabaseService],
 })
 export class AppModule {}

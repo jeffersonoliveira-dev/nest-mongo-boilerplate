@@ -26,6 +26,7 @@
     "@nestjs/mongoose": "^11.0.1",
     "@nestjs/platform-express": "^11.0.1",
     "@nestjs/swagger": "^11.0.5",
+    "@nestjs/terminus": "^11.0.0",
     "@newrelic/winston-enricher": "^4.0.1",
     "@types/mongoose": "^5.11.96",
     "joi": "^17.13.3",
