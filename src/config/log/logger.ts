@@ -39,7 +39,7 @@ if (process.env.NODE_ENV === 'production') {
   });
 
   // TODO: project label
-  const projectLabel = 'bees-experimentation-bff-service';
+  const projectLabel = '';
 
   logger.clear().add(
     new transports.Console({
