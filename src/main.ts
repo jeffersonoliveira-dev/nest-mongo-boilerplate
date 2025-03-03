@@ -18,9 +18,10 @@ async function bootstrap() {
     .build();
   const document = SwaggerModule.createDocument(app, config);
 
-  process.env.MONGODB_URI =
-    configService.getOrThrow('MONGODB_URI') ?? process.env.MONGODB_URI;
-  process.env.MONGODB_NAME = configService.getOrThrow('MONGODB_NAME');
+  process.env.MONGO_CONNECTION_STRING =
+    configService.getOrThrow('MONGO_CONNECTION_STRING') ??
+    process.env.MONGO_CONNECTION_STRING;
+  process.env.MONGODB_DATABASE = configService.getOrThrow('MONGODB_DATABASE');
 
   const command = 'migrate-mongo up';
   const options = {

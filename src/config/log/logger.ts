@@ -9,21 +9,21 @@ const logger = createLogger({
 });
 
 if (process.env.NODE_ENV === 'production') {
-  //   const newrelicFormatter = require('@newrelic/winston-enricher');
-  //   logger.clear().add(
-  //     new transports.Console({
-  //       format: format.combine(
-  //         format.splat(),
-  //         format((info) => {
-  //           if (requestData.requestTraceId) {
-  //             info['requestTraceId'] = requestData.requestTraceId;
-  //           }
-  //           return info;
-  //         })(),
-  //         newrelicFormatter(),
-  //       ),
-  //     }),
-  //   );
+  const newrelicFormatter = require('@newrelic/winston-enricher');
+  logger.clear().add(
+    new transports.Console({
+      format: format.combine(
+        format.splat(),
+        format((info) => {
+          if (requestData.requestTraceId) {
+            info['requestTraceId'] = requestData.requestTraceId;
+          }
+          return info;
+        })(),
+        newrelicFormatter(),
+      ),
+    }),
+  );
 } else {
   const customFormat = format.printf((info) => {
     const { level, message } = info;

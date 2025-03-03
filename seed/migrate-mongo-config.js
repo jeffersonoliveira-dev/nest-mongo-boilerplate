@@ -3,10 +3,10 @@
 const config = {
   mongodb: {
     // TODO Change (or review) the url to your MongoDB:
-    url:  process.env.MONGODB_URI,
+    url:  process.env.MONGO_CONNECTION_STRING,
 
     // TODO Change this to your database name:
-    databaseName: process.env.MONGODB_NAME,
+    databaseName: process.env.MONGODB_DATABASE,
 
     options: {
       useNewUrlParser: true,

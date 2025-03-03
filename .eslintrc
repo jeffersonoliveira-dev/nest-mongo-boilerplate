@@ -1,0 +1,31 @@
+{
+    "env": {
+      "es2021": true,
+      "es6": true,
+      "jest": true,
+      "node": true
+    },
+    "plugins": ["@typescript-eslint", "prettier"],
+    "extends": ["eslint:recommended", "plugin:@typescript-eslint/recommended", "prettier"],
+    "parser": "@typescript-eslint/parser",
+    "parserOptions": {
+      "ecmaVersion": "latest",
+      "sourceType": "module"
+    },
+    "rules": {
+      "prettier/prettier": ["error"],
+      "@typescript-eslint/no-shadow": ["error"],
+      "@typescript-eslint/no-explicit-any": 1,
+      "no-use-before-define": 0,
+      "no-restricted-syntax": 0,
+      "import/no-unresolved": 0,
+      "object-literal-sort-keys": 0,
+      "no-param-reassign": [
+        "error",
+        {
+          "props": false
+        }
+      ]
+    }
+  }
+  

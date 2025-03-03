@@ -9,8 +9,8 @@ import { HealthModule } from './modules/health/health.module';
   imports: [
     ConfigModule.forRoot({
       validationSchema: Joi.object({
-        MONGODB_URI: Joi.string().required(),
-        MONGODB_NAME: Joi.string().required(),
+        MONGO_CONNECTION_STRING: Joi.string().required(),
+        MONGODB_DATABASE: Joi.string().required(),
       }),
       isGlobal: true,
       envFilePath: '.env',
@@ -18,8 +18,8 @@ import { HealthModule } from './modules/health/health.module';
     MongooseModule.forRootAsync({
       imports: [ConfigModule],
       useFactory: (configService: ConfigService) => {
-        const uri = configService.get<string>('MONGODB_URI');
-        const dbName = configService.get<string>('MONGODB_NAME');
+        const uri = configService.get<string>('MONGO_CONNECTION_STRING');
+        const dbName = configService.get<string>('MONGODB_DATABASE');
         return {
           uri,
           dbName,
